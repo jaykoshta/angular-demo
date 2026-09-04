@@ -1,0 +1,27 @@
+<main class="login-page">
+  <section class="intro-panel" aria-label="Welcome">
+    <a class="brand" routerLink="/login">orbit<span>.</span></a>
+    <div class="intro-copy">
+      <p class="eyebrow">YOUR WORKSPACE, SIMPLIFIED</p>
+      <h1>Everything you need,<br />in one calm place.</h1>
+      <p class="description">Sign in to pick up where you left off and keep your work moving forward.</p>
+    </div>
+    <p class="copyright">© 2026 Orbit, Inc.</p>
+  </section>
+  <section class="form-panel">
+    <form class="login-card" (ngSubmit)="signIn()" novalidate>
+      <p class="eyebrow">WELCOME BACK</p><h2>Sign in to your account</h2><p class="subtext">Enter your details below to continue.</p>
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="admin12@gmail.com" [(ngModel)]="email" (input)="error.set(''); emailError.set('')" [attr.aria-invalid]="emailError() ? 'true' : null" required />
+      @if (emailError()) { <p class="error" role="alert">{{ emailError() }}</p> }
+      <div class="password-label"><label for="password">Password</label><a href="#password">Forgot password?</a></div>
+      <div class="password-field">
+        <input id="password" name="password" [type]="showPassword ? 'text' : 'password'" autocomplete="current-password" placeholder="Enter your password" [(ngModel)]="password" (input)="error.set('')" required />
+        <button type="button" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">{{ showPassword ? 'Hide' : 'Show' }}</button>
+      </div>
+      @if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+      <button class="submit-button" type="submit">Sign in <span>→</span></button>
+      <p class="signup">New to Orbit? <a href="#signup">Create an account</a></p>
+    </form>
+  </section>
+</main>
