@@ -1,0 +1,30 @@
+<main class="signup-page">
+  <section class="intro-panel" aria-label="Welcome">
+    <a class="brand" routerLink="/login">orbit<span>.</span></a>
+    <div class="intro-copy">
+      <p class="eyebrow">GET STARTED</p>
+      <h1>Your work,<br />all in one place.</h1>
+      <p class="description">Create your Orbit account and start organizing what matters.</p>
+    </div>
+    <p class="copyright">© 2026 Orbit, Inc.</p>
+  </section>
+  <section class="form-panel">
+    <form class="signup-card" (ngSubmit)="createAccount()" novalidate>
+      <p class="eyebrow">CREATE ACCOUNT</p>
+      <h2>Start your free account</h2>
+      <p class="subtext">Enter your details to create an account.</p>
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" [(ngModel)]="email" (input)="error.set('')" required />
+      <label for="password">Password</label>
+      <div class="password-field">
+        <input id="password" name="password" [type]="showPassword ? 'text' : 'password'" autocomplete="new-password" placeholder="At least 8 characters" [(ngModel)]="password" (input)="error.set('')" required />
+        <button type="button" (click)="showPassword = !showPassword">{{ showPassword ? 'Hide' : 'Show' }}</button>
+      </div>
+      <label for="confirmPassword">Confirm password</label>
+      <input id="confirmPassword" name="confirmPassword" [type]="showPassword ? 'text' : 'password'" autocomplete="new-password" placeholder="Re-enter your password" [(ngModel)]="confirmPassword" (input)="error.set('')" required />
+      @if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+      <button class="submit-button" type="submit">Create account <span>→</span></button>
+      <p class="signin">Already have an account? <a routerLink="/login">Sign in</a></p>
+    </form>
+  </section>
+</main>

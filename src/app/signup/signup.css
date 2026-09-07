@@ -1,0 +1,12 @@
+@import '../login/login.css';
+
+.signup-page { min-height: 100vh; display: grid; grid-template-columns: minmax(320px, 44%) 1fr; }
+.signup-card { width: min(100%, 408px); }
+.signup-card h2 { font-size: 30px; line-height: 1.2; letter-spacing: -1px; margin: 0 0 10px; }
+.signup-card label { margin-top: 20px; }
+.signup-card .password-field { position: relative; }
+.signup-card .password-field input { padding-right: 60px; }
+.signup-card .password-field button { position: absolute; right: 8px; top: 7px; border: 0; background: transparent; color: #6551b6; font-weight: 700; cursor: pointer; padding: 7px; font-size: 12px; }
+.signin { color: #72798a; text-align: center; margin-top: 25px; font-size: 13px; }
+.signin a { color: #6551b6; font-weight: 700; text-decoration: none; font-size: 12px; }
+@media (max-width: 760px) { .signup-page { grid-template-columns: 1fr; } }

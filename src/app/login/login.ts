@@ -11,8 +11,9 @@ export class LoginComponent {
   protected error = signal('');
   protected emailError = signal('');
 
-  // constructor(private readonly router: Router) {}
-  constructor(private readonly router: Router, private readonly auth: Auth) {}
+  constructor(private readonly router: Router, private readonly auth: Auth) {
+    this.email = (this.router.getCurrentNavigation()?.extras.state?.['email'] as string | undefined) ?? '';
+  }
 
   protected signIn(): void {
     const normalizedEmail = this.email.trim();

@@ -10,22 +10,46 @@ interface LoginResponse {
   token: string;
 }
 
+interface SignupResponse {
+  message: string;
+  user: {
+    email: string;
+  };
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class Auth {
 
-  // private apiUrl = 'http://localhost:3000/api/auth';
-  private apiUrl = '/api/auth';
+  private apiUrl = 'http://localhost:3000/api/auth';
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<LoginResponse> {
+  login(
+    email: string,
+    password: string
+  ): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(
       `${this.apiUrl}/login`,
       {
-        email: email,
-        password: password
+        email,
+        password
+      }
+    );
+  }
+
+  signup(
+    email: string,
+    password: string,
+    confirmPassword: string
+  ): Observable<SignupResponse> {
+    return this.http.post<SignupResponse>(
+      `${this.apiUrl}/signup`,
+      {
+        email,
+        password,
+        confirmPassword
       }
     );
   }
