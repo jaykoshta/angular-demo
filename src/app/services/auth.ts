@@ -22,7 +22,8 @@ interface SignupResponse {
 })
 export class Auth {
 
-  private apiUrl = 'http://localhost:3000/api/auth';
+  // private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = '/api/auth';
 
   constructor(private http: HttpClient) {}
 
